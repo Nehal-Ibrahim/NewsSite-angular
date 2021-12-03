@@ -1,0 +1,45 @@
+
+<form class="container" #updateform="ngForm" (ngSubmit)='updateNews(updateform.value)'>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input
+        type="text"
+        class="form-control"
+        id="description"
+        name="description"
+        ngModel
+        [(ngModel)]='news.description'
+        #description="ngModel"
+        required
+        minlength="3"
+      />
+      <div
+        class="errors d-flex justify-content-center"
+        *ngIf="description.touched && description.invalid"
+      >
+        <div *ngIf="description.errors?.['required']">
+          *description is required
+        </div>
+        <div *ngIf="description.errors?.['minlength']">
+          *description minlength is
+          {{description.errors?.['minlength'].requiredLength}}
+        </div>
+      </div>
+    </div>
+    <!-- -------------------------------------------------------------- -->
+  
+    <div class="mb-3 ">
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        name="title"
+        [(ngModel)]='news.title'
+        ngModel
+      />
+      <label class="form-label" for="title">Title</label>
+    </div>
+    <input type="file" (change)='handleupload($event)' name='avatar' accept="image/*">
+    <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+  </form>
+  

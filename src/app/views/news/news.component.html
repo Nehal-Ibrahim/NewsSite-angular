@@ -1,0 +1,21 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Description</th>
+        <th scope="col">Title</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let x of news'>
+        <td>{{x.description}}</td>
+        <td>{{x.title}}</td>
+        <td><button type="submit" class="btn btn-sm btn-danger"(click)='deleteNews(x)'>Delete</button></td>
+        <td><button type="submit" class="btn btn-sm btn-primary" routerLink="/editnews/{{x._id}}">Edit</button> </td>
+        <td><img src="data:image/png;base64,{{x.avatar}}" width="200px" alt="news image"></td>
+
+       
+      </tr>
+    </tbody>
+  </table>

@@ -1,0 +1,43 @@
+<form class="container" #newsform="ngForm" (ngSubmit)='addNews(newsform.value)'>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input
+        type="text"
+        class="form-control"
+        id="description"
+        name="description"
+        ngModel
+        #description="ngModel"
+        required
+        minlength="3"
+      />
+      <div
+        class="errors d-flex justify-content-center"
+        *ngIf="description.touched && description.invalid"
+      >
+        <div *ngIf="description.errors?.['required']">
+          *description is required
+        </div>
+        <div *ngIf="description.errors?.['minlength']">
+          *description minlength is
+          {{description.errors?.['minlength'].requiredLength}}
+        </div>
+      </div>
+    </div>
+    <!-- -------------------------------------------------------------- -->
+  
+    <div class="mb-3 ">
+      <label class="form-label" for="title">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        name="title"
+        ngModel
+        #title="ngModel"
+      />
+     
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="newsform.invalid">Submit</button>
+  </form>
+  
